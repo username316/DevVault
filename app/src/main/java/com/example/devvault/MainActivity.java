@@ -1,5 +1,6 @@
 package com.example.devvault;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,12 +27,13 @@ public class MainActivity extends AppCompatActivity {
         //ResourceListAdapter resourceListAdapter = new ResourceListAdapter(resourceDataList);
         //resourceList.setAdapter(resourceListAdapter);
 
-        /**Button addResButton = findViewById(R.id.add_resource_button);
+        Button addResButton = findViewById(R.id.add_resource_button);
         addResButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MainActivity.this, EditResourceActivity.class);
+                startActivity(intent);
             }
-        });**/
+        });
     }
 }
