@@ -1,5 +1,5 @@
 package com.example.devvault;
-
+// add implementation(libs.room.runtime), annotationProcessor(libs.room.compiler) to build.gradle.kts before running for room implementation
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
