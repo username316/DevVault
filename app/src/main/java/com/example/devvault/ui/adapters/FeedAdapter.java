@@ -1,30 +1,32 @@
 package com.example.devvault.ui.adapters;
 
-import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.devvault.R;
+import com.example.devvault.db.entity.Resource;
 import com.example.devvault.model.HNPost;
+import com.example.devvault.repository.ResourceRepository;
 
 import java.util.List;
 
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
 
     private static final int[] CARD_COLORS = {
-            Color.parseColor("#C8F135"), // lime
-            Color.parseColor("#5DEAFF"), // cyan
-            Color.parseColor("#C5B8FF"), // lavender
-            Color.parseColor("#1A1A1A"), // dark
+            Color.parseColor("#C8F135"),
+            Color.parseColor("#5DEAFF"),
+            Color.parseColor("#C5B8FF"),
+            Color.parseColor("#1A1A1A"),
     };
 
     private static final int[] TITLE_COLORS = {
@@ -61,27 +63,35 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         holder.authorTextView.setText("by " + post.getBy());
         holder.scoreTextView.setText("↑ " + post.getScore());
 
-        // Pill text color on dark card
         int pillText = idx == 3 ? Color.parseColor("#FFFFFF") : Color.parseColor("#1A1A1A");
         int pillBg   = idx == 3 ? Color.parseColor("#2E2E2E") : Color.parseColor("#FFFFFF");
         holder.authorTextView.setTextColor(pillText);
         holder.scoreTextView.setTextColor(pillText);
-        holder.authorTextView.setBackgroundTintList(
-                android.content.res.ColorStateList.valueOf(pillBg));
-        holder.scoreTextView.setBackgroundTintList(
-                android.content.res.ColorStateList.valueOf(pillBg));
+        holder.authorTextView.setBackgroundTintList(ColorStateList.valueOf(pillBg));
+        holder.scoreTextView.setBackgroundTintList(ColorStateList.valueOf(pillBg));
 
         holder.itemView.setRotation(ROTATIONS[idx]);
 
-        // Open URL on link button or card tap
-        View.OnClickListener openUrl = v -> {
-            if (post.getUrl() != null && !post.getUrl().isEmpty()) {
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(post.getUrl()));
-                v.getContext().startActivity(i);
-            }
-        };
-        holder.itemView.setOnClickListener(openUrl);
-        holder.linkBtn.setOnClickListener(openUrl);
+        // + button: save post as a Resource
+        holder.linkBtn.setOnClickListener(v -> {
+            ResourceRepository repo = new ResourceRepository(v.getContext());
+
+            Resource resource = new Resource();
+            resource.title = post.getTitle() != null ? post.getTitle() : "Untitled";
+            resource.url = post.getUrl() != null ? post.getUrl() : "";
+            resource.description = "By " + post.getBy() + " · Score: " + post.getScore();
+            resource.mediaType = "Article";
+            resource.language = "EN";
+            resource.createdAt = System.currentTimeMillis();
+
+            new Thread(() -> {
+                repo.insertResource(resource);
+                // Toast must run on the main thread
+                ((android.app.Activity) v.getContext()).runOnUiThread(() ->
+                        Toast.makeText(v.getContext(), "Saved: " + resource.title, Toast.LENGTH_SHORT).show()
+                );
+            }).start();
+        });
     }
 
     @Override

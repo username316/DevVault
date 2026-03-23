@@ -87,10 +87,12 @@
     </ScrollView>
 
     <Button
+        android:textColor="@color/white"
         android:id="@+id/buttonSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save Resource"
+        android:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
