@@ -2,4 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Brand palette (from the design) -->
+    <color name="lime">#C8F135</color>
+    <color name="cyan">#5DEAFF</color>
+    <color name="lavender">#C5B8FF</color>
+    <color name="bg_cream">#F5F4EE</color>
+    <color name="card_dark">#1A1A1A</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#6B6B6B</color>
+    <color name="text_on_dark">#FFFFFF</color>
+    <color name="pill_bg">#FFFFFF</color>
+    <color name="pill_text">#1A1A1A</color>
+    <color name="play_btn">#1A1A1A</color>
+    <color name="play_btn_light">#FFFFFF</color>
 </resources>

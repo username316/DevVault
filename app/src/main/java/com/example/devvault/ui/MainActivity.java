@@ -2,14 +2,18 @@ package com.example.devvault.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.devvault.R;
 import com.example.devvault.db.entity.Resource;
 import com.example.devvault.repository.ResourceRepository;
 import com.example.devvault.ui.adapters.ResourceAdapter;
+import com.google.android.material.button.MaterialButton;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,23 +28,22 @@ public class MainActivity extends AppCompatActivity {
 
         repository = new ResourceRepository(this);
         recyclerView = findViewById(R.id.resource_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Button buttonAdd = findViewById(R.id.buttonAdd);
-        Button buttonHome = findViewById(R.id.buttonHome);
-        Button buttonFeed = findViewById(R.id.buttonFeed);
+        // Stagger cards vertically; slight horizontal offset is handled by rotation in adapter
+        LinearLayoutManager lm = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(lm);
 
-        buttonAdd.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, AddResourceActivity.class);
-            startActivity(intent);
-        });
+        // Buttons
+        MaterialButton buttonAdd = findViewById(R.id.buttonAdd);
+        buttonAdd.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, AddResourceActivity.class)));
 
+        LinearLayout buttonHome = findViewById(R.id.buttonHome);
         buttonHome.setOnClickListener(v -> loadResources());
 
-        buttonFeed.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, FeedActivity.class);
-            startActivity(intent);
-        });
+        LinearLayout buttonFeed = findViewById(R.id.buttonFeed);
+        buttonFeed.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, FeedActivity.class)));
     }
 
     @Override

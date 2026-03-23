@@ -1,9 +1,27 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.DevVault" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.DevVault" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/lime</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="colorSurface">@color/bg_cream</item>
+        <item name="android:colorBackground">@color/bg_cream</item>
+        <item name="android:windowBackground">@color/bg_cream</item>
+        <item name="android:fontFamily">@font/space_grotesk</item>
     </style>
 
     <style name="Theme.DevVault" parent="Base.Theme.DevVault" />
+
+    <style name="CardTitleStyle">
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="GreetingStyle">
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
 </resources>

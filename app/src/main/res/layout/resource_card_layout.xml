@@ -1,59 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+  Each card is given a random tint (lime / cyan / lavender / dark) by the adapter.
+  The card rotates slightly via the adapter too (-3° to +3°), just like the design.
+-->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardRoot"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="200dp"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="10dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/lime">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="5dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
 
+        <!-- Pill row: duration + sessions -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="5dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/resource_card_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Title"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/resource_card_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="Resource Type"
-                    android:textStyle="italic" />
-            </RelativeLayout>
-
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+            android:id="@+id/pillRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/resource_card_overview"
+                android:id="@+id/resource_card_type"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:ellipsize="end"
-                android:maxLines="3"
-                android:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                />
+                android:layout_height="32dp"
+                android:paddingHorizontal="14dp"
+                android:gravity="center"
+                android:text="22 Days"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/space_grotesk"
+                android:textColor="@color/pill_text"
+                android:background="@drawable/pill_bg_white" />
+
+            <TextView
+                android:id="@+id/resource_card_sessions"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:paddingHorizontal="14dp"
+                android:gravity="center"
+                android:text="7 sessions"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/space_grotesk"
+                android:textColor="@color/pill_text"
+                android:background="@drawable/pill_bg_white" />
+
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Play button -->
+        <FrameLayout
+            android:id="@+id/playBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/circle_dark"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="▶"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/resource_card_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Deep Meditation to Relax"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/space_grotesk"
+            android:textColor="@color/text_primary"
+            android:letterSpacing="-0.02"
+            android:lineSpacingMultiplier="0.95"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Overview / URL (hidden, kept for data) -->
+        <TextView
+            android:id="@+id/resource_card_overview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
