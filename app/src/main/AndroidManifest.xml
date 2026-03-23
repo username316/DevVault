@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DevVault">
         <activity
-            android:name=".ui.ChatActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -28,6 +25,7 @@
         <activity android:name=".ui.AddResourceActivity" />
         <activity android:name=".ui.DetailActivity" />
         <activity android:name=".ui.FeedActivity" />
+        <activity android:name=".ui.ChatActivity" android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

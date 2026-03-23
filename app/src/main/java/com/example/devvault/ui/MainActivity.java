@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout buttonFeed = findViewById(R.id.buttonFeed);
         buttonFeed.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, FeedActivity.class)));
+
+        LinearLayout buttonChat = findViewById(R.id.buttonChat);
+        buttonChat.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, ChatActivity.class)));
     }
 
     @Override

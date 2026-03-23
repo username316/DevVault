@@ -144,6 +144,32 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/feedNavChat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:text="🗨"
+                android:textColor="#88888888"
+                android:textSize="14sp"
+                android:gravity="bottom" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assistant"
+                android:textColor="#888888"
+                android:textSize="11sp"
+                android:fontFamily="@font/space_grotesk" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

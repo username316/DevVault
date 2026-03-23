@@ -52,6 +52,11 @@ public class FeedActivity extends AppCompatActivity {
             finish();
         });
 
+        LinearLayout navChat = findViewById(R.id.feedNavChat);
+        navChat.setOnClickListener(v -> {
+            startActivity(new Intent(FeedActivity.this, ChatActivity.class));
+        });
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.HN_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
