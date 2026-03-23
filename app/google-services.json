@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "833764524232",
+    "project_id": "devvault-51abf",
+    "storage_bucket": "devvault-51abf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833764524232:android:153e6edb07ce614674e5fd",
+        "android_client_info": {
+          "package_name": "com.example.devvault"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK4xSXeZhjbLEZVGETBhLHJ0zxnBaOL5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
