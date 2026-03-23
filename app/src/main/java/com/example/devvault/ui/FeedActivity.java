@@ -1,19 +1,25 @@
 package com.example.devvault.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.devvault.R;
 import com.example.devvault.model.HNPost;
 import com.example.devvault.network.HackerNewsApi;
 import com.example.devvault.ui.adapters.FeedAdapter;
 import com.example.devvault.utils.Constants;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,7 +31,7 @@ public class FeedActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private FeedAdapter adapter;
-    private List<HNPost> postList = new ArrayList<>();
+    private final List<HNPost> postList = new ArrayList<>();
     private HackerNewsApi api;
 
     @Override
@@ -39,11 +45,17 @@ public class FeedActivity extends AppCompatActivity {
         adapter = new FeedAdapter(postList);
         recyclerView.setAdapter(adapter);
 
+        // Back to home
+        LinearLayout navHome = findViewById(R.id.feedNavHome);
+        navHome.setOnClickListener(v -> {
+            startActivity(new Intent(FeedActivity.this, MainActivity.class));
+            finish();
+        });
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.HN_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         api = retrofit.create(HackerNewsApi.class);
         fetchTopStories();
     }
@@ -55,11 +67,8 @@ public class FeedActivity extends AppCompatActivity {
             public void onResponse(Call<List<Long>> call, Response<List<Long>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Long> ids = response.body();
-                    // Just fetch top 20 for brevity
                     int limit = Math.min(ids.size(), 20);
-                    for (int i = 0; i < limit; i++) {
-                        fetchItem(ids.get(i));
-                    }
+                    for (int i = 0; i < limit; i++) fetchItem(ids.get(i));
                 }
                 progressBar.setVisibility(View.GONE);
             }
