@@ -28,14 +28,18 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonAdd = findViewById(R.id.buttonAdd);
         Button buttonHome = findViewById(R.id.buttonHome);
+        Button buttonFeed = findViewById(R.id.buttonFeed);
 
         buttonAdd.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AddResourceActivity.class);
             startActivity(intent);
         });
 
-        buttonHome.setOnClickListener(v -> {
-            loadResources();
+        buttonHome.setOnClickListener(v -> loadResources());
+
+        buttonFeed.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FeedActivity.class);
+            startActivity(intent);
         });
     }
 
