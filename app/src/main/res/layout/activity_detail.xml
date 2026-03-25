@@ -41,6 +41,15 @@
             android:textSize="16sp"/>
 
         <Button
+            android:id="@+id/buttonBackToHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Back to Home"
+            style="@style/Widget.MaterialComponents.Button"/>
+
+        <Button
             android:id="@+id/buttonDelete"
             android:textColor="@color/white"
             android:backgroundTint="@color/black"
