@@ -11,7 +11,7 @@ import com.example.devvault.repository.ResourceRepository;
 
 public class DetailActivity extends AppCompatActivity {
     private TextView textViewTitle, textViewTypeLang, textViewUrl, textViewDescription;
-    private Button buttonDelete;
+    private Button buttonDelete, buttonBackToHome;
     private ResourceRepository repository;
     private Resource resource;
 
@@ -25,6 +25,7 @@ public class DetailActivity extends AppCompatActivity {
         textViewUrl = findViewById(R.id.textViewDetailUrl);
         textViewDescription = findViewById(R.id.textViewDetailDescription);
         buttonDelete = findViewById(R.id.buttonDelete);
+        buttonBackToHome = findViewById(R.id.buttonBackToHome);
 
         repository = new ResourceRepository(this);
 
@@ -34,6 +35,7 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         buttonDelete.setOnClickListener(v -> deleteResource());
+        buttonBackToHome.setOnClickListener(v -> finish());
     }
 
     private void displayResource() {
