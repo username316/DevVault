@@ -1,64 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/bg_cream">
 
-    <LinearLayout
+    <ImageButton
+        android:id="@+id/buttonBackToHome"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Back"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:src="@android:drawable/ic_menu_revert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonBackToHome">
 
-        <TextView
-            android:id="@+id/textViewDetailTitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewDetailTypeLang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="14sp"
-            android:textColor="@android:color/darker_gray"/>
+            <TextView
+                android:id="@+id/textViewDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_grotesk"
+                android:letterSpacing="-0.02"
+                android:textColor="@color/text_primary"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textViewDetailUrl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textColor="?attr/colorPrimary"
-            android:autoLink="web"/>
+            <TextView
+                android:id="@+id/textViewDetailTypeLang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/space_grotesk"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/textViewDetailDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/textViewDetailUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:autoLink="web"
+                android:fontFamily="@font/space_grotesk"
+                android:textColor="?attr/colorPrimary" />
 
-        <Button
-            android:id="@+id/buttonBackToHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Back to Home"
-            style="@style/Widget.MaterialComponents.Button"/>
+            <TextView
+                android:id="@+id/textViewDetailDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/space_grotesk"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/buttonDelete"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Delete Resource"
-            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+            <Button
+                android:id="@+id/buttonDelete"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/card_dark"
+                android:paddingHorizontal="24dp"
+                android:text="Delete Resource"
+                android:textColor="@color/white" />
 
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
